@@ -1,0 +1,4 @@
+export default {
+  FETCHING: 'FETCHING',
+  CANCEL_FETCHING: 'CANCEL_FETCHING',
+}
