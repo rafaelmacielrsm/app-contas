@@ -1,0 +1,25 @@
+{
+  "bills": [{
+    "billId": "",
+    "localBillId": 1,
+    "boughtAt": 1564095866284,
+    "boughtFor": "All",
+    "businessName": "Casas Bahia",
+    "details": "móvel de escritório",
+    "expenseGroup": "1",
+    "isSynchronized": false,
+    "isModified": false,
+    "payer": "Rafael",
+    "value": 9.99
+  }],
+  "configs": {
+    "ratios": [0.4, 0.6],
+    "users": { "0": "Katia", "1": "Rafael", "all": "Ambos" }
+  },
+  "expenseGroups": [
+    { "description": "Casa", "id": 1, "localId": 1 },
+    { "description": "SuperMercado", "id": 2, "localId": 2 }
+  ],
+  "isFetching": false,
+  "synchedAt": 1564095866284
+}

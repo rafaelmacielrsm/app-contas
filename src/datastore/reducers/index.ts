@@ -2,12 +2,6 @@ import { IReduxAction } from '../../app-types/redux-types';
 import C from '../../app-types/actionTypes';
 import { combineReducers } from 'redux';
 
-
-/**
- * Reducer to the fetching boolean variable
- * @param {boolean} [state]  current state in the app store
- * @returns next state after the redux action takes effect
- */
 const fetching = ( state : boolean = false, action: IReduxAction ) : boolean => {
   switch ( action.type ) {
     case C.FETCHING:
@@ -20,6 +14,16 @@ const fetching = ( state : boolean = false, action: IReduxAction ) : boolean => 
   }
 }
 
+const synchedAt = ( state: number = 0, action: IReduxAction ) : number => {
+  switch ( action.type ) {
+    case C.SET_SYNC_DATE:
+      return Date.now()
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  fetching: fetching
+  fetching: fetching,
+  synchedAt: synchedAt
 })

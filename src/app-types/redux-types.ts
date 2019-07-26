@@ -1,4 +1,9 @@
 export interface IReduxAction {
   type: string,
-  payload?: object
+  payload?: any
+}
+
+export interface IReduxState {
+  fecthing: boolean,
+  lastSync: number
 }
