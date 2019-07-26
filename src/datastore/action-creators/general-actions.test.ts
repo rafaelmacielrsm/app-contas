@@ -1,5 +1,5 @@
-import createReduxStore from './index';
-import { fetching, cancelFetching, setSynchedAt } from './action-creators/general-actions';
+import createReduxStore from '../index';
+import { fetching, cancelFetching, setSynchedAt } from './general-actions';
 import { Store } from 'redux';
 
 describe( 'fetching reducer', () => {
