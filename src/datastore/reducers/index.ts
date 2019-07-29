@@ -1,4 +1,4 @@
-import { IReduxAction } from '../../app-types/redux-types';
+import { IReduxAction, IConfigs } from '../../app-types/redux-types';
 import C from '../../app-types/actionTypes';
 import { combineReducers } from 'redux';
 
@@ -23,7 +23,37 @@ const synchedAt = ( state: number = 0, action: IReduxAction ) : number => {
   }
 }
 
+const ratio = ( state: number[] = [ 0.5, 0.5 ], action : IReduxAction ) => {
+  switch ( action.type ) {
+    case C.SET_RATIO_CONFIG:
+      return action.payload;
+    default:
+      return state;
+  }
+  
+}
+
+const users = ( state : {}, action : IReduxAction ) => {
+  switch ( action.type ) {
+    case C.SET_USERS_CONFIG:
+      return action.payload
+    default:
+      return state;
+  }
+}
+
+const configs = ( 
+  state: IConfigs = { ratio: [ 0.5, 0.5 ], users: {'1': '', '2': '', 'all': ''}}, 
+  action: IReduxAction ) : IConfigs => {
+
+  return {
+    ratio: ratio( state.ratio, action ),
+    users: users( state.users, action )
+  }
+}
+
 export default combineReducers({
-  fetching: fetching,
-  synchedAt: synchedAt
+  fetching,
+  synchedAt,
+  configs
 })

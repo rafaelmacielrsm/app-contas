@@ -72,7 +72,7 @@ describe( 'fetching reducer', () => {
   });
 });
 
-describe( 'synchedAt reducers', () => {
+describe( 'synchedAt reducer', () => {
   describe( 'when no initialstate is provided', () => {
     const store = createReduxStore();
 
