@@ -17,8 +17,8 @@
     "users": { "0": "Katia", "1": "Rafael", "all": "Ambos" }
   },
   "expenseGroups": [
-    { "description": "Casa", "id": 1, "localId": 1 },
-    { "description": "SuperMercado", "id": 2, "localId": 2 }
+    { "description": "Casa", "id": 1, "localId": 1, "synched": true },
+    { "description": "SuperMercado", "id": 2, "localId": 2, "synched": true }
   ],
   "isFetching": false,
   "synchedAt": 1564095866284

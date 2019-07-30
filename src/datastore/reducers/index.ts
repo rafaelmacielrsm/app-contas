@@ -1,4 +1,4 @@
-import { IReduxAction, IConfigs } from '../../app-types/redux-types';
+import { IReduxAction, IConfigs, IExpenseGroup } from '../../app-types/redux-types';
 import C from '../../app-types/actionTypes';
 import { combineReducers } from 'redux';
 
@@ -23,7 +23,10 @@ const synchedAt = ( state: number = 0, action: IReduxAction ) : number => {
   }
 }
 
-const ratio = ( state: number[] = [ 0.5, 0.5 ], action : IReduxAction ) => {
+const ratio = ( 
+  state: number[] = [ 0.5, 0.5 ], 
+  action : IReduxAction ) : number[] => {
+
   switch ( action.type ) {
     case C.SET_RATIO_CONFIG:
       return action.payload;
@@ -33,7 +36,7 @@ const ratio = ( state: number[] = [ 0.5, 0.5 ], action : IReduxAction ) => {
   
 }
 
-const users = ( state : {}, action : IReduxAction ) => {
+const users = ( state : {}, action : IReduxAction ) : object => {
   switch ( action.type ) {
     case C.SET_USERS_CONFIG:
       return action.payload
@@ -52,8 +55,28 @@ const configs = (
   }
 }
 
+const expenseGroups = ( 
+  state: Array<IExpenseGroup> = [], 
+  action: IReduxAction ) : Array<IExpenseGroup> => {
+
+  switch ( action.type ) {
+    case C.SET_EXPENSE_GROUPS:
+      return action.payload
+    case C.CHANGE_EXPENSE_GROUP: 
+      const { data, index } = action.payload;
+      return state.map(( e, i ) => (
+        i === index  
+          ? { ...e, description: data.description, synched: false } 
+          : e
+      ))
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   fetching,
   synchedAt,
-  configs
+  configs,
+  expenseGroups
 })

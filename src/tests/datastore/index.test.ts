@@ -1,4 +1,4 @@
-import createReduxStore from '.';
+import createReduxStore from '../../datastore';
 
 describe( '.createReduxStore', () => {
   const reduxStore = createReduxStore();
@@ -40,6 +40,19 @@ describe( '.getState', () => {
       const expected = { ratio: expect.any(Array), users: expect.any(Object) }
       const actual = reduxStore.getState().configs
       expect( actual ).toEqual(expect.objectContaining( expected ))
+    });
+  });
+
+  describe( '.expenseGroups', () => {
+    it( 'should respond to expenseGroups', () => {
+      const expected = ['expenseGroups'];
+      const actual = Object.keys( reduxStore.getState() )
+
+      expect( actual ).toEqual( expect.arrayContaining( expected ))
+    });
+
+    it( 'should start as an empty array as default', () => {
+      expect( reduxStore.getState().expenseGroups ).toEqual([])
     });
   });
 });
