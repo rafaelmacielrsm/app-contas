@@ -1,5 +1,6 @@
 import createReduxStore from '../../../datastore/index';
-import { setRatioConfig, setUsersConfig } from '../../../datastore/action-creators/configs-actions';
+import { setRatioConfig, setUsersConfig } 
+  from '../../../datastore/action-creators/configs-actions';
 
 describe( 'Configs Actions', () => {
   describe( '.ratio', () => {

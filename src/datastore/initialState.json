@@ -9,7 +9,7 @@
     "expenseGroup": "1",
     "isSynchronized": false,
     "isModified": false,
-    "payer": "Rafael",
+    "paidFor": "0",
     "value": 9.99
   }],
   "configs": {

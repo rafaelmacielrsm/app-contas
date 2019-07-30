@@ -1,4 +1,4 @@
-import { IReduxAction, IConfigs, IExpenseGroup } from '../../app-types/redux-types';
+import { IReduxAction, IConfigs, IExpenseGroup, IBill } from '../../app-types/redux-types';
 import C from '../../app-types/actionTypes';
 import { combineReducers } from 'redux';
 
@@ -74,9 +74,26 @@ const expenseGroups = (
   }
 }
 
+const bills = ( state: Array<IBill> = [], action: IReduxAction ) => {
+  switch ( action.type ) {
+    case C.SET_BILLS:
+      return action.payload;
+    case C.CHANGE_BILL:
+      const { data, index } = action.payload;
+      return state.map(( e, i ) => (
+        i === index  
+          ? { ...e, ...data, isModified: true, isSynchronized: false } 
+          : e
+      ))
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   fetching,
   synchedAt,
   configs,
-  expenseGroups
+  expenseGroups,
+  bills
 })
